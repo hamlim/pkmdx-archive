@@ -1,6 +1,5 @@
-import React from 'react';
-import { DropdownMenuProps } from '@radix-ui/react-dropdown-menu';
-import { ELEMENT_BLOCKQUOTE } from '@udecode/plate-block-quote';
+import { DropdownMenuProps } from "@radix-ui/react-dropdown-menu";
+import { ELEMENT_BLOCKQUOTE } from "@udecode/plate-block-quote";
 import {
   collapseSelection,
   findNode,
@@ -11,11 +10,12 @@ import {
   toggleNodeType,
   useEditorRef,
   useEditorSelector,
-} from '@udecode/plate-common';
-import { ELEMENT_H1, ELEMENT_H2, ELEMENT_H3 } from '@udecode/plate-heading';
-import { ELEMENT_PARAGRAPH } from '@udecode/plate-paragraph';
+} from "@udecode/plate-common";
+import { ELEMENT_H1, ELEMENT_H2, ELEMENT_H3 } from "@udecode/plate-heading";
+import { ELEMENT_PARAGRAPH } from "@udecode/plate-paragraph";
+import React from "react";
 
-import { Icons } from '@/web-client/components/icons';
+import { Icons } from "@/components/icons";
 
 import {
   DropdownMenu,
@@ -25,38 +25,38 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
   useOpenState,
-} from './dropdown-menu';
-import { ToolbarButton } from './toolbar';
+} from "./dropdown-menu";
+import { ToolbarButton } from "./toolbar";
 
 const items = [
   {
     value: ELEMENT_PARAGRAPH,
-    label: 'Paragraph',
-    description: 'Paragraph',
+    label: "Paragraph",
+    description: "Paragraph",
     icon: Icons.paragraph,
   },
   {
     value: ELEMENT_H1,
-    label: 'Heading 1',
-    description: 'Heading 1',
+    label: "Heading 1",
+    description: "Heading 1",
     icon: Icons.h1,
   },
   {
     value: ELEMENT_H2,
-    label: 'Heading 2',
-    description: 'Heading 2',
+    label: "Heading 2",
+    description: "Heading 2",
     icon: Icons.h2,
   },
   {
     value: ELEMENT_H3,
-    label: 'Heading 3',
-    description: 'Heading 3',
+    label: "Heading 3",
+    description: "Heading 3",
     icon: Icons.h3,
   },
   {
     value: ELEMENT_BLOCKQUOTE,
-    label: 'Quote',
-    description: 'Quote (⌘+⇧+.)',
+    label: "Quote",
+    description: "Quote (⌘+⇧+.)",
     icon: Icons.blockquote,
   },
   // {
@@ -84,8 +84,8 @@ export function TurnIntoDropdownMenu(props: DropdownMenuProps) {
 
       if (entry) {
         return (
-          items.find((item) => item.value === entry[0].type)?.value ??
-          ELEMENT_PARAGRAPH
+          items.find((item) => item.value === entry[0].type)?.value
+            ?? ELEMENT_PARAGRAPH
         );
       }
     }
@@ -96,8 +96,7 @@ export function TurnIntoDropdownMenu(props: DropdownMenuProps) {
   const editor = useEditorRef();
   const openState = useOpenState();
 
-  const selectedItem =
-    items.find((item) => item.value === value) ?? defaultItem;
+  const selectedItem = items.find((item) => item.value === value) ?? defaultItem;
   const { icon: SelectedItemIcon, label: selectedItemLabel } = selectedItem;
 
   return (

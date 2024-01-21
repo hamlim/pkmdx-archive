@@ -1,13 +1,9 @@
-import React from 'react';
-import { ComboboxProps } from '@udecode/plate-combobox';
-import { getPluginOptions, useEditorRef } from '@udecode/plate-common';
-import {
-  ELEMENT_MENTION,
-  getMentionOnSelectItem,
-  MentionPlugin,
-} from '@udecode/plate-mention';
+import { ComboboxProps } from "@udecode/plate-combobox";
+import { getPluginOptions, useEditorRef } from "@udecode/plate-common";
+import { ELEMENT_MENTION, getMentionOnSelectItem, MentionPlugin } from "@udecode/plate-mention";
+import React from "react";
 
-import { Combobox } from './combobox';
+import { Combobox } from "./combobox";
 
 export function MentionCombobox({
   pluginKey = ELEMENT_MENTION,

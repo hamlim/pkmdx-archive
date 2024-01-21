@@ -1,9 +1,9 @@
-import {PlateEditor as Editor} from '@/local/editor'
+import { PlateEditor as Editor } from "@/local/editor";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Editor />
     </main>
-  )
+  );
 }

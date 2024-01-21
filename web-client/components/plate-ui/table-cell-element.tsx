@@ -1,14 +1,14 @@
-import React from 'react';
-import { cn, withProps, withRef } from '@udecode/cn';
-import { PlateElement } from '@udecode/plate-common';
+import { cn, withProps, withRef } from "@udecode/cn";
+import { PlateElement } from "@udecode/plate-common";
 import {
   useTableCellElement,
   useTableCellElementResizable,
   useTableCellElementResizableState,
   useTableCellElementState,
-} from '@udecode/plate-table';
+} from "@udecode/plate-table";
+import React from "react";
 
-import { ResizeHandle } from './resizable';
+import { ResizeHandle } from "./resizable";
 
 export const TableCellElement = withRef<
   typeof PlateElement,
@@ -38,44 +38,41 @@ export const TableCellElement = withRef<
     colSpan,
   });
 
-  const { rightProps, bottomProps, leftProps, hiddenLeft } =
-    useTableCellElementResizable(resizableState);
+  const { rightProps, bottomProps, leftProps, hiddenLeft } = useTableCellElementResizable(resizableState);
 
-  const Cell = isHeader ? 'th' : 'td';
+  const Cell = isHeader ? "th" : "td";
 
   return (
     <PlateElement
       ref={ref}
       asChild
       className={cn(
-        'relative h-full overflow-visible border-none bg-background p-0',
-        hideBorder && 'before:border-none',
-        element.background ? 'bg-[--cellBackground]' : 'bg-background',
-        !hideBorder &&
-          cn(
-            isHeader && 'text-left [&_>_*]:m-0',
-            'before:h-full before:w-full',
-            selected && 'before:z-10 before:bg-muted',
+        "relative h-full overflow-visible border-none bg-background p-0",
+        hideBorder && "before:border-none",
+        element.background ? "bg-[--cellBackground]" : "bg-background",
+        !hideBorder
+          && cn(
+            isHeader && "text-left [&_>_*]:m-0",
+            "before:h-full before:w-full",
+            selected && "before:z-10 before:bg-muted",
             "before:absolute before:box-border before:select-none before:content-['']",
-            borders &&
-              cn(
-                borders.bottom?.size &&
-                  `before:border-b before:border-b-border`,
+            borders
+              && cn(
+                borders.bottom?.size
+                  && `before:border-b before:border-b-border`,
                 borders.right?.size && `before:border-r before:border-r-border`,
                 borders.left?.size && `before:border-l before:border-l-border`,
-                borders.top?.size && `before:border-t before:border-t-border`
-              )
+                borders.top?.size && `before:border-t before:border-t-border`,
+              ),
           ),
-        className
+        className,
       )}
       {...cellProps}
       {...props}
-      style={
-        {
-          '--cellBackground': element.background,
-          ...style,
-        } as React.CSSProperties
-      }
+      style={{
+        "--cellBackground": element.background,
+        ...style,
+      } as React.CSSProperties}
     >
       <Cell>
         <div
@@ -113,16 +110,16 @@ export const TableCellElement = withRef<
                 {hovered && (
                   <div
                     className={cn(
-                      'absolute -top-3 z-30 h-[calc(100%_+_12px)] w-1 bg-ring',
-                      'right-[-1.5px]'
+                      "absolute -top-3 z-30 h-[calc(100%_+_12px)] w-1 bg-ring",
+                      "right-[-1.5px]",
                     )}
                   />
                 )}
                 {hoveredLeft && (
                   <div
                     className={cn(
-                      'absolute -top-3 z-30 h-[calc(100%_+_12px)] w-1 bg-ring',
-                      'left-[-1.5px]'
+                      "absolute -top-3 z-30 h-[calc(100%_+_12px)] w-1 bg-ring",
+                      "left-[-1.5px]",
                     )}
                   />
                 )}
@@ -134,7 +131,7 @@ export const TableCellElement = withRef<
     </PlateElement>
   );
 });
-TableCellElement.displayName = 'TableCellElement';
+TableCellElement.displayName = "TableCellElement";
 
 export const TableCellHeaderElement = withProps(TableCellElement, {
   isHeader: true,

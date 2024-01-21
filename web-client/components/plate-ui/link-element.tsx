@@ -1,7 +1,7 @@
-import React from 'react';
-import { cn, withRef } from '@udecode/cn';
-import { PlateElement, useElement } from '@udecode/plate-common';
-import { TLinkElement, useLink } from '@udecode/plate-link';
+import { cn, withRef } from "@udecode/cn";
+import { PlateElement, useElement } from "@udecode/plate-common";
+import { TLinkElement, useLink } from "@udecode/plate-link";
+import React from "react";
 
 export const LinkElement = withRef<typeof PlateElement>(
   ({ className, children, ...props }, ref) => {
@@ -13,8 +13,8 @@ export const LinkElement = withRef<typeof PlateElement>(
         ref={ref}
         asChild
         className={cn(
-          'font-medium text-primary underline decoration-primary underline-offset-4',
-          className
+          "font-medium text-primary underline decoration-primary underline-offset-4",
+          className,
         )}
         {...(linkProps as any)}
         {...props}
@@ -22,5 +22,5 @@ export const LinkElement = withRef<typeof PlateElement>(
         <a>{children}</a>
       </PlateElement>
     );
-  }
+  },
 );

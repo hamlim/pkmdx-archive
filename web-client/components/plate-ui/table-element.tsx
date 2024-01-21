@@ -1,7 +1,6 @@
-import React from 'react';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { PopoverAnchor } from '@radix-ui/react-popover';
-import { cn, withRef } from '@udecode/cn';
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { PopoverAnchor } from "@radix-ui/react-popover";
+import { cn, withRef } from "@udecode/cn";
 import {
   isSelectionExpanded,
   PlateElement,
@@ -9,7 +8,7 @@ import {
   useEditorSelector,
   useElement,
   useRemoveNodeButton,
-} from '@udecode/plate-common';
+} from "@udecode/plate-common";
 import {
   mergeTableCells,
   TTableElement,
@@ -18,21 +17,22 @@ import {
   useTableElement,
   useTableElementState,
   useTableMergeState,
-} from '@udecode/plate-table';
-import { useReadOnly, useSelected } from 'slate-react';
+} from "@udecode/plate-table";
+import React from "react";
+import { useReadOnly, useSelected } from "slate-react";
 
-import { Icons, iconVariants } from '@/web-client/components/icons';
+import { Icons, iconVariants } from "@/components/icons";
 
-import { Button } from './button';
+import { Button } from "./button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuPortal,
   DropdownMenuTrigger,
-} from './dropdown-menu';
-import { Popover, PopoverContent, popoverVariants } from './popover';
-import { Separator } from './separator';
+} from "./dropdown-menu";
+import { Popover, PopoverContent, popoverVariants } from "./popover";
+import { Separator } from "./separator";
 
 export const TableBordersDropdownMenuContent = withRef<
   typeof DropdownMenuPrimitive.Content
@@ -50,7 +50,7 @@ export const TableBordersDropdownMenuContent = withRef<
   return (
     <DropdownMenuContent
       ref={ref}
-      className={cn('min-w-[220px]')}
+      className={cn("min-w-[220px]")}
       side="right"
       align="start"
       sideOffset={0}
@@ -58,30 +58,30 @@ export const TableBordersDropdownMenuContent = withRef<
     >
       <DropdownMenuCheckboxItem
         checked={hasBottomBorder}
-        onCheckedChange={getOnSelectTableBorder('bottom')}
+        onCheckedChange={getOnSelectTableBorder("bottom")}
       >
-        <Icons.borderBottom className={iconVariants({ size: 'sm' })} />
+        <Icons.borderBottom className={iconVariants({ size: "sm" })} />
         <div>Bottom Border</div>
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
         checked={hasTopBorder}
-        onCheckedChange={getOnSelectTableBorder('top')}
+        onCheckedChange={getOnSelectTableBorder("top")}
       >
-        <Icons.borderTop className={iconVariants({ size: 'sm' })} />
+        <Icons.borderTop className={iconVariants({ size: "sm" })} />
         <div>Top Border</div>
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
         checked={hasLeftBorder}
-        onCheckedChange={getOnSelectTableBorder('left')}
+        onCheckedChange={getOnSelectTableBorder("left")}
       >
-        <Icons.borderLeft className={iconVariants({ size: 'sm' })} />
+        <Icons.borderLeft className={iconVariants({ size: "sm" })} />
         <div>Left Border</div>
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
         checked={hasRightBorder}
-        onCheckedChange={getOnSelectTableBorder('right')}
+        onCheckedChange={getOnSelectTableBorder("right")}
       >
-        <Icons.borderRight className={iconVariants({ size: 'sm' })} />
+        <Icons.borderRight className={iconVariants({ size: "sm" })} />
         <div>Right Border</div>
       </DropdownMenuCheckboxItem>
 
@@ -89,16 +89,16 @@ export const TableBordersDropdownMenuContent = withRef<
 
       <DropdownMenuCheckboxItem
         checked={hasNoBorders}
-        onCheckedChange={getOnSelectTableBorder('none')}
+        onCheckedChange={getOnSelectTableBorder("none")}
       >
-        <Icons.borderNone className={iconVariants({ size: 'sm' })} />
+        <Icons.borderNone className={iconVariants({ size: "sm" })} />
         <div>No Border</div>
       </DropdownMenuCheckboxItem>
       <DropdownMenuCheckboxItem
         checked={hasOuterBorders}
-        onCheckedChange={getOnSelectTableBorder('outer')}
+        onCheckedChange={getOnSelectTableBorder("outer")}
       >
-        <Icons.borderAll className={iconVariants({ size: 'sm' })} />
+        <Icons.borderAll className={iconVariants({ size: "sm" })} />
         <div>Outside Borders</div>
       </DropdownMenuCheckboxItem>
     </DropdownMenuContent>
@@ -112,7 +112,7 @@ export const TableFloatingToolbar = withRef<typeof PopoverContent>(
 
     const selectionCollapsed = useEditorSelector(
       (editor) => !isSelectionExpanded(editor),
-      []
+      [],
     );
 
     const readOnly = useReadOnly();
@@ -178,7 +178,7 @@ export const TableFloatingToolbar = withRef<typeof PopoverContent>(
             ref={ref}
             className={cn(
               popoverVariants(),
-              'flex w-[220px] flex-col gap-1 p-1'
+              "flex w-[220px] flex-col gap-1 p-1",
             )}
             onOpenAutoFocus={(e) => e.preventDefault()}
             {...props}
@@ -190,13 +190,12 @@ export const TableFloatingToolbar = withRef<typeof PopoverContent>(
         )}
       </Popover>
     );
-  }
+  },
 );
 
 export const TableElement = withRef<typeof PlateElement>(
   ({ className, children, ...props }, ref) => {
-    const { colSizes, isSelectingCell, minColumnWidth, marginLeft } =
-      useTableElementState();
+    const { colSizes, isSelectingCell, minColumnWidth, marginLeft } = useTableElementState();
     const { props: tableProps, colGroupProps } = useTableElement();
 
     return (
@@ -206,9 +205,9 @@ export const TableElement = withRef<typeof PlateElement>(
             ref={ref}
             asChild
             className={cn(
-              'my-4 ml-px mr-0 table h-px w-full table-fixed border-collapse',
-              isSelectingCell && '[&_*::selection]:bg-none',
-              className
+              "my-4 ml-px mr-0 table h-px w-full table-fixed border-collapse",
+              isSelectingCell && "[&_*::selection]:bg-none",
+              className,
             )}
             {...tableProps}
             {...props}
@@ -232,5 +231,5 @@ export const TableElement = withRef<typeof PlateElement>(
         </div>
       </TableFloatingToolbar>
     );
-  }
+  },
 );

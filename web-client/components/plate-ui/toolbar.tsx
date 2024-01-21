@@ -1,45 +1,40 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { ComponentPropsWithoutRef, ReactNode } from 'react';
-import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
-import { cn, withCn, withRef, withVariants } from '@udecode/cn';
+import * as ToolbarPrimitive from "@radix-ui/react-toolbar";
+import { cn, withCn, withRef, withVariants } from "@udecode/cn";
+import * as React from "react";
+import { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import { Icons } from '@/web-client/components/icons';
+import { Icons } from "@/components/icons";
 
-import { Separator } from './separator';
-import { Toggle, toggleVariants } from './toggle';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipPortal,
-  TooltipTrigger,
-} from './tooltip';
+import { Separator } from "./separator";
+import { Toggle, toggleVariants } from "./toggle";
+import { Tooltip, TooltipContent, TooltipPortal, TooltipTrigger } from "./tooltip";
 
 export const Toolbar = withCn(
   ToolbarPrimitive.Root,
-  'relative flex select-none items-stretch gap-1 bg-background'
+  "relative flex select-none items-stretch gap-1 bg-background",
 );
 
 export const ToolbarToggleGroup = withCn(
   ToolbarPrimitive.ToolbarToggleGroup,
-  'flex items-center'
+  "flex items-center",
 );
 
 export const ToolbarLink = withCn(
   ToolbarPrimitive.Link,
-  'font-medium underline underline-offset-4'
+  "font-medium underline underline-offset-4",
 );
 
 export const ToolbarSeparator = withCn(
   ToolbarPrimitive.Separator,
-  'my-1 w-[1px] shrink-0 bg-border'
+  "my-1 w-[1px] shrink-0 bg-border",
 );
 
 export const ToolbarButton = withRef<
   typeof ToolbarPrimitive.Button,
-  Omit<ComponentPropsWithoutRef<typeof Toggle>, 'type'> & {
-    buttonType?: 'button' | 'toggle';
+  Omit<ComponentPropsWithoutRef<typeof Toggle>, "type"> & {
+    buttonType?: "button" | "toggle";
     pressed?: boolean;
     tooltip?: ReactNode;
     isDropdown?: boolean;
@@ -49,7 +44,7 @@ export const ToolbarButton = withRef<
     {
       className,
       variant,
-      size = 'sm',
+      size = "sm",
       isDropdown,
       children,
       pressed,
@@ -57,7 +52,7 @@ export const ToolbarButton = withRef<
       tooltip,
       ...props
     },
-    ref
+    ref,
   ) => {
     const [isLoaded, setIsLoaded] = React.useState(false);
 
@@ -65,8 +60,8 @@ export const ToolbarButton = withRef<
       setIsLoaded(true);
     }, []);
 
-    const content =
-      typeof pressed === 'boolean' ? (
+    const content = typeof pressed === "boolean"
+      ? (
         <ToolbarToggleGroup type="single" value="single">
           <ToolbarToggleItem
             ref={ref}
@@ -75,21 +70,20 @@ export const ToolbarButton = withRef<
                 variant,
                 size,
               }),
-              isDropdown && 'my-1 justify-between pr-1',
-              className
+              isDropdown && "my-1 justify-between pr-1",
+              className,
             )}
-            value={pressed ? 'single' : ''}
+            value={pressed ? "single" : ""}
             {...props}
           >
             <div className="flex flex-1">{children}</div>
             <div>
-              {isDropdown && (
-                <Icons.arrowDown className="ml-0.5 h-4 w-4" data-icon />
-              )}
+              {isDropdown && <Icons.arrowDown className="ml-0.5 h-4 w-4" data-icon />}
             </div>
           </ToolbarToggleItem>
         </ToolbarToggleGroup>
-      ) : (
+      )
+      : (
         <ToolbarPrimitive.Button
           ref={ref}
           className={cn(
@@ -97,8 +91,8 @@ export const ToolbarButton = withRef<
               variant,
               size,
             }),
-            isDropdown && 'pr-1',
-            className
+            isDropdown && "pr-1",
+            className,
           )}
           {...props}
         >
@@ -106,28 +100,28 @@ export const ToolbarButton = withRef<
         </ToolbarPrimitive.Button>
       );
 
-    return isLoaded && tooltip ? (
-      <Tooltip>
-        <TooltipTrigger asChild>{content}</TooltipTrigger>
+    return isLoaded && tooltip
+      ? (
+        <Tooltip>
+          <TooltipTrigger asChild>{content}</TooltipTrigger>
 
-        <TooltipPortal>
-          <TooltipContent>{tooltip}</TooltipContent>
-        </TooltipPortal>
-      </Tooltip>
-    ) : (
-      <>{content}</>
-    );
-  }
+          <TooltipPortal>
+            <TooltipContent>{tooltip}</TooltipContent>
+          </TooltipPortal>
+        </Tooltip>
+      )
+      : <>{content}</>;
+  },
 );
 
 export const ToolbarToggleItem = withVariants(
   ToolbarPrimitive.ToggleItem,
   toggleVariants,
-  ['variant', 'size']
+  ["variant", "size"],
 );
 
 export const ToolbarGroup = withRef<
-  'div',
+  "div",
   {
     noSeparator?: boolean;
   }
@@ -136,7 +130,7 @@ export const ToolbarGroup = withRef<
   if (!childArr || childArr.length === 0) return null;
 
   return (
-    <div ref={ref} className={cn('flex', className)}>
+    <div ref={ref} className={cn("flex", className)}>
       {!noSeparator && (
         <div className="h-full py-1">
           <Separator orientation="vertical" />

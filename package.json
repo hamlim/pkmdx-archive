@@ -12,9 +12,11 @@
     "dev": "turbo run dev",
     "build": "turbo run build",
     "test": "turbo run test",
-    "test:e2e": "turbo run test:e2e"
+    "test:e2e": "turbo run test:e2e",
+    "format": "dprint fmt"
   },
   "devDependencies": {
+    "dprint": "^0.45.0",
     "turbo": "^1.11.3"
   }
 }

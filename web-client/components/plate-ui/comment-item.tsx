@@ -1,17 +1,13 @@
-'use client';
+"use client";
 
-import React from 'react';
-import {
-  CommentProvider,
-  useCommentById,
-  useCommentItemContentState,
-} from '@udecode/plate-comments';
-import { formatDistance } from 'date-fns';
+import { CommentProvider, useCommentById, useCommentItemContentState } from "@udecode/plate-comments";
+import { formatDistance } from "date-fns";
+import React from "react";
 
-import { CommentAvatar } from './comment-avatar';
-import { CommentMoreDropdown } from './comment-more-dropdown';
-import { CommentResolveButton } from './comment-resolve-button';
-import { CommentValue } from './comment-value';
+import { CommentAvatar } from "./comment-avatar";
+import { CommentMoreDropdown } from "./comment-more-dropdown";
+import { CommentResolveButton } from "./comment-resolve-button";
+import { CommentValue } from "./comment-value";
 
 type PlateCommentProps = {
   commentId: string;
@@ -48,11 +44,7 @@ function CommentItemContent() {
       </div>
 
       <div className="mb-4 pl-7 pt-0.5">
-        {editingValue ? (
-          <CommentValue />
-        ) : (
-          <div className="whitespace-pre-wrap text-sm">{commentText}</div>
-        )}
+        {editingValue ? <CommentValue /> : <div className="whitespace-pre-wrap text-sm">{commentText}</div>}
       </div>
     </div>
   );
