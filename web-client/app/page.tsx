@@ -1,4 +1,6 @@
-import { PlateEditor as Editor } from "@/local/editor";
+// import { ForwardRefEditor as Editor } from "@/local/ForwardRefEditor";
+// import { Editor } from "@/local/NovelEditor";
+import { PlateEditor as Editor } from "@/local/PlateEditor";
 
 export default function Home() {
   return (
