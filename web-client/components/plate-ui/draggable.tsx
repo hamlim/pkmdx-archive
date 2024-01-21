@@ -10,7 +10,7 @@ import {
 } from '@udecode/plate-dnd';
 import { DropTargetMonitor } from 'react-dnd';
 
-import { Icons } from '@/components/icons';
+import { Icons } from '@/web-client/components/icons';
 
 import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
 

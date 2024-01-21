@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
 import { cn, withCn, withRef, withVariants } from '@udecode/cn';
 
-import { Icons } from '@/components/icons';
+import { Icons } from '@/web-client/components/icons';
 
 import { Separator } from './separator';
 import { Toggle, toggleVariants } from './toggle';

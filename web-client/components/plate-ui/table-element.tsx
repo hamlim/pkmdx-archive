@@ -21,7 +21,7 @@ import {
 } from '@udecode/plate-table';
 import { useReadOnly, useSelected } from 'slate-react';
 
-import { Icons, iconVariants } from '@/components/icons';
+import { Icons, iconVariants } from '@/web-client/components/icons';
 
 import { Button } from './button';
 import {
