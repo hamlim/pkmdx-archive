@@ -5,6 +5,16 @@
   "workspaces": [
     "web-client",
     "remote-api",
-    "local-api"
-  ]
+    "local-api",
+    "e2e"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e"
+  },
+  "devDependencies": {
+    "turbo": "^1.11.3"
+  }
 }
